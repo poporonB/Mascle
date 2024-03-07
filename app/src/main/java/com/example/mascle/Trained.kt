@@ -14,6 +14,7 @@ class Trained : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(this, Times::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

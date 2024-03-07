@@ -10,14 +10,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-                val button = findViewById<Button>(R.id.fatiguelevels)
-                button.setOnClickListener {
-                    val intent = Intent(this, FatigueLevels::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-
+        val button = findViewById<Button>(R.id.fatiguelevels)
+        button.setOnClickListener {
+            val intent = Intent(this, FatigueLevels::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
-
 }
