@@ -4,18 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mascle.R
 
-class FatigueLevels : AppCompatActivity(){
+class Trained : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fatigurelevels)
-        
-        val button = findViewById<Button>(R.id.fat_com)
+        setContentView(R.layout.activity_trained)
+
+        val button = findViewById<Button>(R.id.tra_com)
         button.setOnClickListener {
-            val intent = Intent(this, Trained::class.java)
+            val intent = Intent(this, Times::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }
