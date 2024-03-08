@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 var flag_fat: Boolean = false
 var colorArray = arrayOf(Color.GREEN, Color.CYAN, Color.YELLOW, Color.RED, Color.BLACK)
-var countClick = arrayOf(0,0,0,0,0,0,0)
+var countClick = arrayOf(0,0,0,0,0,0,0,0,0,0)
 class FatigueLevels : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +69,6 @@ class FatigueLevels : AppCompatActivity(){
             countClick[5] = (countClick[5] + 1) % colorArray.size
             leftLeg.setBackgroundColor(colorArray[countClick[5]])
         }
-
     }
 }
 
@@ -92,5 +91,23 @@ class FatigueLevelsBack : AppCompatActivity() {
             startActivity(Intent(this, FatigueLevels::class.java))
         }
 
+        var back = findViewById<Button>(R.id.back)
+        back.setBackgroundColor(colorArray[countClick[6]])
+        back.setOnClickListener {
+            countClick[6] = (countClick[6] + 1) % colorArray.size
+            back.setBackgroundColor(colorArray[countClick[6]])
+        }
+        var rightcalf = findViewById<Button>(R.id.right_calf)
+        rightcalf.setBackgroundColor(colorArray[countClick[7]])
+        rightcalf.setOnClickListener {
+            countClick[7] = (countClick[7] + 1) % colorArray.size
+            rightcalf.setBackgroundColor(colorArray[countClick[7]])
+        }
+        var leftcalf = findViewById<Button>(R.id.left_calf)
+        leftcalf.setBackgroundColor(colorArray[countClick[8]])
+        leftcalf.setOnClickListener {
+            countClick[8] = (countClick[8] + 1) % colorArray.size
+            leftcalf.setBackgroundColor(colorArray[countClick[8]])
+        }
     }
 }
