@@ -10,9 +10,9 @@ class List : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        val button = findViewById<Button>(R.id.list_com)
+        val button = findViewById<Button>(R.id.start)
         button.setOnClickListener {
-            val intent = Intent(this, Play::class.java)
+            val intent = Intent(this, List::class.java)
             startActivity(intent)
             finish()
         }
