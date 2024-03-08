@@ -66,7 +66,7 @@ class Play : AppCompatActivity() {
 
                             if(count<=listed.size){//もしもメニューがまだ続くなら
                                 runOnUiThread {
-                                    TextTime.text = "終了！"
+                                    TextTime.text = "次へ"
                                 }
                                 main(++count)
                             }else{//ここに処理を書かないとアプリが落ちる
