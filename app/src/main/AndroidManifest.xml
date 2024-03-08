@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FatigueLevels"/>
+        <activity android:name=".FatigueLevelsBack"/>
         <activity android:name=".Trained"/>
         <activity android:name=".Times"/>
         <activity android:name=".List"/>
