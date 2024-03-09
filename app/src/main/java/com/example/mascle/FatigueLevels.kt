@@ -1,8 +1,6 @@
 package com.example.mascle
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -16,18 +14,18 @@ class FatigueLevels : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fatigurelevels)
 
-        // 後面への切り替え
-        val change_button = findViewById<Button>(R.id.change_back)
-        change_button.setOnClickListener {
-            startActivity(Intent(this, FatigueLevelsBack::class.java))
-        }
-
         // 次画面への遷移ボタン
         val button = findViewById<Button>(R.id.fat_com)
         button.setOnClickListener {
             val intent = Intent(this, Trained::class.java)
             startActivity(intent)
             finish()
+        }
+
+        // 後面への切り替え
+        val change_button = findViewById<Button>(R.id.change_back)
+        change_button.setOnClickListener {
+            startActivity(Intent(this, FatigueLevelsBack::class.java))
         }
 
         //　右腕の状態疲労度入力
@@ -78,17 +76,18 @@ class FatigueLevelsBack : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fatigure_back)
 
-        //次画面への遷移ボタン
-        val button = findViewById<Button>(R.id.fat_com_back)
-        button.setOnClickListener {
-            val intent = Intent(this, Trained::class.java)
-            startActivity(intent)
-            finish()
-        }
         //前面への切り替え
         val change_button = findViewById<Button>(R.id.change_front)
         change_button.setOnClickListener {
             startActivity(Intent(this, FatigueLevels::class.java))
+        }
+
+        //次画面への遷移ボタン
+        val button = findViewById<Button>(R.id.tra_com_back)
+        button.setOnClickListener {
+            val intent = Intent(this, Trained::class.java)
+            startActivity(intent)
+            finish()
         }
 
         var back = findViewById<Button>(R.id.back)
