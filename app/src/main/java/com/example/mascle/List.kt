@@ -2,6 +2,7 @@ package com.example.mascle
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mascle.R.id.start
@@ -50,5 +51,11 @@ class List : AppCompatActivity() {
             e.printStackTrace()
         }
         return resultList
+    }
+
+    fun getList(listed : kotlin.collections.List<kotlin.collections.List<Any>>,time : Int){//負荷度と部位をコピー
+        val listTrain = listed.map{it.toList()}
+        val min = time
+        Log.e("List", listTrain.joinToString()+min)
     }
 }

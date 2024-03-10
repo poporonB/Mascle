@@ -4,9 +4,10 @@ import android.content.Intent
 import android.util.Log
 var times : Int = 0//確保できた時間
 var trainedPart = arrayOf(false,false,false,false,false,false,false,false,false)//筋トレしたい場所
-var loadPart = arrayOf(0,0,0,0,0,0,0,0,0)//疲労度
-var levels : Int = 3//筋トレレベル
+var loadPart = arrayOf(5,5,5,5,5,5,5,5,5)//疲労度
+var levels : Int = 1//筋トレレベル
 class AdoptionMenu (){
+    val listGet = List()//ここ大事やで
 
     var listed = mutableListOf(//ここでメニューを入れている
         mutableListOf<Any>(5,"Rarm"),//負荷と部位
@@ -23,6 +24,7 @@ class AdoptionMenu (){
     fun main(){//関数を組み合わせればよい
         loadValue()
         Log.e("Tag", listed.toString())
+        listGet.getList(listed, times)//Listにリストと時間を送る
     }
 
     fun cycle(min:Int):Pair<Int,Int>{//1サイクルのセット数と残り時間
@@ -58,7 +60,7 @@ class AdoptionMenu (){
                 1 -> when(loadPart[i]){
                         5,4 -> listed[i][0] = 3
                         3 -> listed[i][0] = 2
-                        2,1 -> listed[i][0] = 1
+                        else -> listed[i][0] = 1
                     }
                 2 -> when(loadPart[i]) {
                         5, 4 -> listed[i][0] = 4
