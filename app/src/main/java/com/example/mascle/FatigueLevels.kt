@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 var flag_fat: Boolean = false
 var colorArray = arrayOf(Color.BLACK, Color.RED, Color.YELLOW, Color.CYAN, Color.GREEN)
-var countClick = arrayOf(5,5,5,5,5,5,5,5,5,5)
+var countClick = arrayOf(5,5,5,5,5,5,5,5,5)
 class FatigueLevels : AppCompatActivity(){
     //val adMe = AdoptionMenu()//ここ大事やで←グローバル変数にしました
     override fun onCreate(savedInstanceState: Bundle?) {

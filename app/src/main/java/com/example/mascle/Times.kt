@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.utils.ViewTimeCycle
-val adMe = AdoptionMenu()//ここ大事やで
 class Times : AppCompatActivity(){
 
     private lateinit var viewTime: TextView

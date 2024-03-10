@@ -37,6 +37,10 @@ class AdoptionMenu (){
         loadPart = load.copyOf()
         Log.e("Tag", loadPart.contentToString())
     }
+    fun getLevel(level : Int){//負荷をコピー
+        levels = level
+        Log.e("Tag", levels.toString())
+    }
     fun getArea(Area : Array<Boolean>){//鍛えたいエリアをコピー
         trainedPart = Area.copyOf()
         Log.e("Tag", trainedPart.contentToString())
