@@ -69,7 +69,7 @@ class Play : AppCompatActivity() {
                             }else{//ここに処理を書かないとアプリが落ちる
                                 runOnUiThread {
                                     textTime.text = "お疲れさまでした"
-                                    startRestart.text = "戻る"
+                                    startRestart.text = "最初の画面に戻る"
                                     textMenue.text = ""
                                 }
                             }
@@ -90,7 +90,6 @@ class Play : AppCompatActivity() {
         }
     }
     fun screanTrans(){
-        Log.d("Intent", "インテントやで")
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
