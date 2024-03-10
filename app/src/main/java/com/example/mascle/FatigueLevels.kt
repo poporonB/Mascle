@@ -1,8 +1,6 @@
 package com.example.mascle
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -10,24 +8,26 @@ import androidx.appcompat.app.AppCompatActivity
 
 var flag_fat: Boolean = false
 var colorArray = arrayOf(Color.GREEN, Color.CYAN, Color.YELLOW, Color.RED, Color.BLACK)
-var countClick = arrayOf(0,0,0,0,0,0,0)
+var countClick = arrayOf(0,0,0,0,0,0,0,0,0,0)
 class FatigueLevels : AppCompatActivity(){
+    val adMe = AdoptionMenu()//ここ大事やで
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fatigurelevels)
+
+        // 次画面への遷移ボタン
+        val button = findViewById<Button>(R.id.fat_com)
+        button.setOnClickListener {
+            adMe.getFatigue(countClick)//疲労度を取得
+            val intent = Intent(this, Trained::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         // 後面への切り替え
         val change_button = findViewById<Button>(R.id.change_back)
         change_button.setOnClickListener {
             startActivity(Intent(this, FatigueLevelsBack::class.java))
-        }
-
-        // 次画面への遷移ボタン
-        val button = findViewById<Button>(R.id.fat_com)
-        button.setOnClickListener {
-            val intent = Intent(this, Trained::class.java)
-            startActivity(intent)
-            finish()
         }
 
         //　右腕の状態疲労度入力
@@ -69,7 +69,6 @@ class FatigueLevels : AppCompatActivity(){
             countClick[5] = (countClick[5] + 1) % colorArray.size
             leftLeg.setBackgroundColor(colorArray[countClick[5]])
         }
-
     }
 }
 
@@ -79,18 +78,37 @@ class FatigueLevelsBack : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fatigure_back)
 
-        //次画面への遷移ボタン
-        val button = findViewById<Button>(R.id.fat_com_back)
-        button.setOnClickListener {
-            val intent = Intent(this, Trained::class.java)
-            startActivity(intent)
-            finish()
-        }
         //前面への切り替え
         val change_button = findViewById<Button>(R.id.change_front)
         change_button.setOnClickListener {
             startActivity(Intent(this, FatigueLevels::class.java))
         }
 
+        //次画面への遷移ボタン
+        val button = findViewById<Button>(R.id.tra_com_back)
+        button.setOnClickListener {
+            val intent = Intent(this, Trained::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        var back = findViewById<Button>(R.id.back)
+        back.setBackgroundColor(colorArray[countClick[6]])
+        back.setOnClickListener {
+            countClick[6] = (countClick[6] + 1) % colorArray.size
+            back.setBackgroundColor(colorArray[countClick[6]])
+        }
+        var rightcalf = findViewById<Button>(R.id.right_calf)
+        rightcalf.setBackgroundColor(colorArray[countClick[7]])
+        rightcalf.setOnClickListener {
+            countClick[7] = (countClick[7] + 1) % colorArray.size
+            rightcalf.setBackgroundColor(colorArray[countClick[7]])
+        }
+        var leftcalf = findViewById<Button>(R.id.left_calf)
+        leftcalf.setBackgroundColor(colorArray[countClick[8]])
+        leftcalf.setOnClickListener {
+            countClick[8] = (countClick[8] + 1) % colorArray.size
+            leftcalf.setBackgroundColor(colorArray[countClick[8]])
+        }
     }
 }

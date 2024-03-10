@@ -24,6 +24,7 @@
         <activity android:name=".FatigueLevels"/>
         <activity android:name=".FatigueLevelsBack"/>
         <activity android:name=".Trained"/>
+        <activity android:name=".TrainedBack"/>
         <activity android:name=".Times"/>
         <activity android:name=".List"/>
         <activity android:name=".Play"/>

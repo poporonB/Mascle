@@ -1,14 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
         android:id="@+id/tim_com"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Button" />
+        android:layout_width="282dp"
+        android:layout_height="66dp"
+        android:text="完了"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ViewTime"
+        app:layout_constraintVertical_bias="0.771" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/ViewTime"
+        android:layout_width="181dp"
+        android:layout_height="153dp"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="96sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.271" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="125dp"
+        android:layout_height="96dp"
+        android:layout_marginEnd="8dp"
+        android:text="1分"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button10"
+        app:layout_constraintEnd_toStartOf="@+id/button10"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button10"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="116dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="16dp"
+        android:text="5分"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tim_com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ViewTime"
+        app:layout_constraintVertical_bias="0.248" />
+
+    <Button
+        android:id="@+id/button30"
+        android:layout_width="123dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="8dp"
+        android:text="10分"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button10"
+        app:layout_constraintTop_toTopOf="@+id/button10"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/minit"
+        android:layout_width="95dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:text="分"
+        android:textSize="96sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewTime"
+        app:layout_constraintStart_toEndOf="@+id/ViewTime"
+        app:layout_constraintTop_toTopOf="@+id/ViewTime"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/buttonM10"
+        android:layout_width="118dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="8dp"
+        android:text="-5分"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/button10"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/button10"
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="276dp"
+        android:layout_height="79dp"
+        android:gravity="center"
+        android:text="Max30分"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/ViewTime"
+        app:layout_constraintEnd_toEndOf="@+id/minit"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ViewTime"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.641" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

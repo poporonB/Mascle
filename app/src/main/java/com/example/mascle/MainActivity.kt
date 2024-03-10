@@ -11,13 +11,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val button = findViewById<Button>(R.id.fatiguelevels)
-        /*button.setOnClickListener {
+        button.setOnClickListener {
             val intent = Intent(this, FatigueLevels::class.java)
             startActivity(intent)
             finish()
-        }*/
-        val intent = Intent(this, Play::class.java)
+        }
+        /*val intent = Intent(this, Play::class.java)
         startActivity(intent)
-        finish()
+        finish()*/
     }
 }
