@@ -29,10 +29,12 @@ class Times : AppCompatActivity(){
         viewTime = findViewById<TextView>(R.id.ViewTime)
 
         finish.setOnClickListener{
-            adMe.getTimes(times)//時間を取得
-            val intent = Intent(this, List::class.java)
-            startActivity(intent)
-            finish()
+            if(times<=30 && times > 0) {
+                adMe.getTimes(times)//時間を取得
+                val intent = Intent(this, List::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         time5.setOnClickListener{
@@ -55,6 +57,9 @@ class Times : AppCompatActivity(){
         times = getTime.toInt() + time//取得した時間をINT型にして＋
         if(times>=30) {
             times = 30
+        }
+        if(time<0){
+            times = 0
         }
         getTime = times.toString()//String型に戻す
         viewTime.text = getTime
