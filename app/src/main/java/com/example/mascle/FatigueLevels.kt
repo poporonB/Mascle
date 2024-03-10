@@ -10,7 +10,7 @@ var flag_fat: Boolean = false
 var colorArray = arrayOf(Color.GREEN, Color.CYAN, Color.YELLOW, Color.RED, Color.BLACK)
 var countClick = arrayOf(0,0,0,0,0,0,0,0,0,0)
 class FatigueLevels : AppCompatActivity(){
-    val adMe = AdoptionMenu()//ここ大事やで
+    //val adMe = AdoptionMenu()//ここ大事やで←グローバル変数にしました
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fatigurelevels)
@@ -73,6 +73,7 @@ class FatigueLevels : AppCompatActivity(){
 }
 
 class FatigueLevelsBack : AppCompatActivity() {
+    //val adMe = AdoptionMenu()//ここ大事やで
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +88,7 @@ class FatigueLevelsBack : AppCompatActivity() {
         //次画面への遷移ボタン
         val button = findViewById<Button>(R.id.tra_com_back)
         button.setOnClickListener {
+            adMe.getFatigue(countClick)//疲労度を取得
             val intent = Intent(this, Trained::class.java)
             startActivity(intent)
             finish()

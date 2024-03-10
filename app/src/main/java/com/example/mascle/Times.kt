@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.utils.ViewTimeCycle
-
+val adMe = AdoptionMenu()//ここ大事やで
 class Times : AppCompatActivity(){
 
     private lateinit var viewTime: TextView
@@ -17,8 +17,6 @@ class Times : AppCompatActivity(){
     private lateinit var finish: Button
     private var getTime = "0"//表示されている時間
     var times : Int = 0//表示する時間
-
-    val adMe = AdoptionMenu()//ここ大事やで
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

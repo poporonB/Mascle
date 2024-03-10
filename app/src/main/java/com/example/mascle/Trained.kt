@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 var checkCol = arrayOf(Color.WHITE, Color.GREEN)
 var trainedArea = arrayOf(false,false,false,false,false,false,false,false,false)
 class Trained : AppCompatActivity() {
-    val adMe = AdoptionMenu()//ここ大事やで
+    //val adMe = AdoptionMenu()//ここ大事やで
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trained)
@@ -79,6 +79,7 @@ class TrainedBack : AppCompatActivity() {
         //次画面への遷移ボタン
         val button = findViewById<Button>(R.id.tra_com_back)
         button.setOnClickListener {
+            adMe.getArea(trainedArea)//筋トレしたい部位を取得
             val intent = Intent(this, Times::class.java)
             startActivity(intent)
             finish()

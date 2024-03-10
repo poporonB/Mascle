@@ -4,7 +4,7 @@ import android.content.Intent
 import android.util.Log
 var times : Int = 0//確保できた時間
 var trainedPart = arrayOf(false,false,false,false,false,false,false,false,false)//筋トレしたい場所
-var loadPart = arrayOf(0,0,0,0,0,0,0,0,0,0)//疲労度
+var loadPart = arrayOf(0,0,0,0,0,0,0,0,0)//疲労度
 var levels : Int = 3//筋トレレベル
 class AdoptionMenu (){
 
