@@ -24,7 +24,7 @@ class AdoptionMenu (){
     fun main(){//関数を組み合わせればよい
         loadValue()
         Log.e("Tag", listed.toString())
-        listGet.getList(listed, times)//Listにリストと時間を送る
+        listGet.getList(listed, times,trainedPart)//Listにリストと時間を送る
     }
 
     fun cycle(min:Int):Pair<Int,Int>{//1サイクルのセット数と残り時間
