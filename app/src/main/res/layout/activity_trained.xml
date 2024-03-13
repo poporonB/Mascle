@@ -27,7 +27,6 @@
             android:background="#00FFFFFF"
             android:baselineAligned="false"
             app:srcCompat="@drawable/body_front" />
-
     </LinearLayout>
 
     <Button
