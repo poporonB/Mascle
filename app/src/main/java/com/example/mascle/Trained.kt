@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-var checkCol = arrayOf(Color.WHITE, Color.GREEN)
+var checkCol = arrayOf(Color.GRAY, Color.GREEN)
 var trainedArea = arrayOf(false,false,false,false,false,false,false,false,false)
 class Trained : AppCompatActivity() {
     //val adMe = AdoptionMenu()//ここ大事やで

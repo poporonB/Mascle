@@ -57,6 +57,9 @@ class Times : AppCompatActivity(){
         if(times>=30) {
             times = 30
         }
+        if(times < 0) {
+            times = 0
+        }
         getTime = times.toString()//String型に戻す
         viewTime.text = getTime
     }
