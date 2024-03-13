@@ -53,9 +53,10 @@ class List : AppCompatActivity() {
         return resultList
     }
 
-    fun getList(listed : kotlin.collections.List<kotlin.collections.List<Any>>,time : Int){//負荷度と部位をコピー
+    fun getList(listed : kotlin.collections.List<kotlin.collections.List<Any>>,time : Int,trainPart:Array<Boolean>){//負荷度と部位と鍛えたい部位をコピー
         val listTrain = listed.map{it.toList()}
         val min = time
-        Log.e("List", listTrain.joinToString()+min)
+        val trainingPart = trainPart
+        Log.e("List", listTrain.joinToString()+" "+min+" "+trainingPart.contentToString())
     }
 }

@@ -24,7 +24,7 @@ class AdoptionMenu (){
     fun main(){//関数を組み合わせればよい
         loadValue()
         Log.e("Tag", listed.toString())
-        listGet.getList(listed, times)//Listにリストと時間を送る
+        listGet.getList(listed, times,trainedPart)//Listにリストと時間を送る
     }
 
     fun cycle(min:Int):Pair<Int,Int>{//1サイクルのセット数と残り時間
@@ -36,6 +36,10 @@ class AdoptionMenu (){
     fun getFatigue(load : Array<Int>){//負荷をコピー
         loadPart = load.copyOf()
         Log.e("Tag", loadPart.contentToString())
+    }
+    fun getLevel(level : Int){//負荷をコピー
+        levels = level
+        Log.e("Tag", levels.toString())
     }
     fun getArea(Area : Array<Boolean>){//鍛えたいエリアをコピー
         trainedPart = Area.copyOf()

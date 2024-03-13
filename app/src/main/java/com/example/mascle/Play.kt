@@ -10,8 +10,13 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Button
 import android.content.Intent
+import android.media.Ringtone//音
+import android.net.Uri//音
+import android.media.RingtoneManager//音
 
 class Play : AppCompatActivity() {
+    lateinit var ur0: Uri//音
+    lateinit var rt0: Ringtone//音
     private lateinit var textMenue: TextView
     private lateinit var textTime: TextView
     private lateinit var startRestart: Button
@@ -27,6 +32,9 @@ class Play : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
+
+        ur0=RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)//音
+        rt0=RingtoneManager.getRingtone(this,ur0)//音
 
         textMenue = findViewById<TextView>(R.id.textMenue)
         textTime = findViewById<TextView>(R.id.textTime)
@@ -46,12 +54,10 @@ class Play : AppCompatActivity() {
 
     fun time(Second:Int,menueName:String) {
         synchronized(timer) {
-
             buttonFlag = false//trueでタイマー開始のためfalseにもどす
             var remainingTime = Second
 
             runOnUiThread {
-                startRestart.text = "開始"
                 textTime.text = "残り時間：${remainingTime}秒"
                 textMenue.text = menueName // メニュー名を設定
             }
@@ -64,6 +70,8 @@ class Play : AppCompatActivity() {
                             remainingTime--
                         } else {//タイマーが終わったときの処理
                             cancel() // タイマーを停止
+                            rt0.play()//音
+                            runOnUiThread { startRestart.text = "アラームを止める"}
                             if(count+1<listed.size){//もしもメニューがまだ続くなら
                                 main(++count)
                             }else{//ここに処理を書かないとアプリが落ちる
@@ -80,7 +88,11 @@ class Play : AppCompatActivity() {
         }
     }
     fun buttonPush(){
-        if(textTime.text.toString()=="お疲れさまでした"){
+        if(startRestart.text.toString() == "アラームを止める") {
+            rt0.stop()//音
+            runOnUiThread { startRestart.text = "開始"}
+        }else if(textTime.text.toString()=="お疲れさまでした"){
+            rt0.stop()//音
             screanTrans()
         }else{
             buttonFlag = !buttonFlag // フラグをトグル
