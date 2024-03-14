@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.utils.ViewTimeCycle
-
 class Times : AppCompatActivity(){
 
     private lateinit var viewTime: TextView
@@ -17,8 +16,6 @@ class Times : AppCompatActivity(){
     private lateinit var finish: Button
     private var getTime = "0"//表示されている時間
     var times : Int = 0//表示する時間
-
-    val adMe = AdoptionMenu()//ここ大事やで
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +29,12 @@ class Times : AppCompatActivity(){
         viewTime = findViewById<TextView>(R.id.ViewTime)
 
         finish.setOnClickListener{
-            adMe.getTimes(times)//時間を取得
-            val intent = Intent(this, MenuList::class.java)
-            startActivity(intent)
-            finish()
+            if(times<=30 && times > 0) {
+                adMe.getTimes(times)//時間を取得
+                val intent = Intent(this, List::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         time5.setOnClickListener{
@@ -58,6 +57,9 @@ class Times : AppCompatActivity(){
         times = getTime.toInt() + time//取得した時間をINT型にして＋
         if(times>=30) {
             times = 30
+        }
+        if(times<0){
+            times = 0
         }
         getTime = times.toString()//String型に戻す
         viewTime.text = getTime

@@ -4,10 +4,9 @@ import android.content.Intent
 import android.util.Log
 var times : Int = 0//確保できた時間
 var trainedPart = arrayOf(false,false,false,false,false,false,false,false,false)//筋トレしたい場所
-var loadPart = arrayOf(5,5,5,5,5,5,5,5,5)//疲労度
-var levels : Int = 1//筋トレレベル
+var loadPart = arrayOf(0,0,0,0,0,0,0,0,0,0)//疲労度
+var levels : Int = 3//筋トレレベル
 class AdoptionMenu (){
-    val listGet = MenuList()//ここ大事やで
 
     var listed = mutableListOf(//ここでメニューを入れている
         mutableListOf<Any>(5,"Rarm"),//負荷と部位
@@ -24,7 +23,6 @@ class AdoptionMenu (){
     fun main(){//関数を組み合わせればよい
         loadValue()
         Log.e("Tag", listed.toString())
-        listGet.getList(listed, times,trainedPart)//Listにリストと時間を送る
     }
 
     fun cycle(min:Int):Pair<Int,Int>{//1サイクルのセット数と残り時間
@@ -36,10 +34,6 @@ class AdoptionMenu (){
     fun getFatigue(load : Array<Int>){//負荷をコピー
         loadPart = load.copyOf()
         Log.e("Tag", loadPart.contentToString())
-    }
-    fun getLevel(level : Int){//負荷をコピー
-        levels = level
-        Log.e("Tag", levels.toString())
     }
     fun getArea(Area : Array<Boolean>){//鍛えたいエリアをコピー
         trainedPart = Area.copyOf()
@@ -62,14 +56,14 @@ class AdoptionMenu (){
         for(i in 0 until 9){//疲労度と負荷に影響させる
             when(levels){
                 1 -> when(loadPart[i]){
-                    5,4 -> listed[i][0] = 3
-                    3 -> listed[i][0] = 2
-                    else -> listed[i][0] = 1
-                }
+                        5,4 -> listed[i][0] = 3
+                        3 -> listed[i][0] = 2
+                        2,1 -> listed[i][0] = 1
+                    }
                 2 -> when(loadPart[i]) {
-                    5, 4 -> listed[i][0] = 4
-                    else -> listed[i][0] = loadPart[i]
-                }
+                        5, 4 -> listed[i][0] = 4
+                        else -> listed[i][0] = loadPart[i]
+                    }
                 3 -> listed[i][0] = loadPart[i]
             }
         }

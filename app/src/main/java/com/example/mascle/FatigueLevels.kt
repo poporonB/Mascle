@@ -7,10 +7,10 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 var flag_fat: Boolean = false
-var colorArray = arrayOf(Color.GREEN, Color.CYAN, Color.YELLOW, Color.RED, Color.BLACK)
-var countClick = arrayOf(0,0,0,0,0,0,0,0,0,0)
+var colorArray = arrayOf(Color.BLACK, Color.RED, Color.YELLOW, Color.CYAN, Color.GREEN)
+var countClick = arrayOf(5,5,5,5,5,5,5,5,5)
 class FatigueLevels : AppCompatActivity(){
-    val adMe = AdoptionMenu()//ここ大事やで
+    //val adMe = AdoptionMenu()//ここ大事やで←グローバル変数にしました
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fatigurelevels)
@@ -32,47 +32,48 @@ class FatigueLevels : AppCompatActivity(){
 
         //　右腕の状態疲労度入力
         var rightArm = findViewById<Button>(R.id.right_arm)
-        rightArm.setBackgroundColor(colorArray[countClick[0]])
+        rightArm.setBackgroundColor(colorArray[countClick[0]-1])
         rightArm.setOnClickListener {
-            countClick[0] = (countClick[0] + 1) % colorArray.size
-            rightArm.setBackgroundColor(colorArray[countClick[0]])
+            if(countClick[0] == 1) countClick[0] = 5 else countClick[0] = (countClick[0] - 1) % colorArray.size
+            rightArm.setBackgroundColor(colorArray[countClick[0]-1])
         }
 
         var leftArm = findViewById<Button>(R.id.left_arm)
-        leftArm.setBackgroundColor(colorArray[countClick[1]])
+        leftArm.setBackgroundColor(colorArray[countClick[1]-1])
         leftArm.setOnClickListener {
-            countClick[1] = (countClick[1] + 1) % colorArray.size
-            leftArm.setBackgroundColor(colorArray[countClick[1]])
+            if(countClick[1] == 1) countClick[1] = 5 else countClick[1] = (countClick[1] - 1) % colorArray.size
+            leftArm.setBackgroundColor(colorArray[countClick[1]-1])
         }
 
         var chest = findViewById<Button>(R.id.chest)
-        chest.setBackgroundColor(colorArray[countClick[2]])
+        chest.setBackgroundColor(colorArray[countClick[2]-1])
         chest.setOnClickListener {
-            countClick[2] = (countClick[2] + 1) % colorArray.size
-            chest.setBackgroundColor(colorArray[countClick[2]])
+            if(countClick[2] == 1) countClick[2] = 5 else countClick[2] = (countClick[2] - 1) % colorArray.size
+            chest.setBackgroundColor(colorArray[countClick[2]-1])
         }
         var stomach = findViewById<Button>(R.id.stomach)
-        stomach.setBackgroundColor(colorArray[countClick[3]])
+        stomach.setBackgroundColor(colorArray[countClick[3]-1])
         stomach.setOnClickListener {
-            countClick[3] = (countClick[3] + 1) % colorArray.size
-            stomach.setBackgroundColor(colorArray[countClick[3]])
+            if(countClick[3] == 1) countClick[3] = 5 else countClick[3] = (countClick[3] - 1) % colorArray.size
+            stomach.setBackgroundColor(colorArray[countClick[3]-1])
         }
         var rightLeg = findViewById<Button>(R.id.right_leg)
-        rightLeg.setBackgroundColor(colorArray[countClick[4]])
+        rightLeg.setBackgroundColor(colorArray[countClick[4]-1])
         rightLeg.setOnClickListener {
-            countClick[4] = (countClick[4] + 1) % colorArray.size
-            rightLeg.setBackgroundColor(colorArray[countClick[4]])
+            if(countClick[4] == 1) countClick[4] = 5 else countClick[4] = (countClick[4] - 1) % colorArray.size
+            rightLeg.setBackgroundColor(colorArray[countClick[4]-1])
         }
         var leftLeg = findViewById<Button>(R.id.left_leg)
-        leftLeg.setBackgroundColor(colorArray[countClick[5]])
+        leftLeg.setBackgroundColor(colorArray[countClick[5]-1])
         leftLeg.setOnClickListener {
-            countClick[5] = (countClick[5] + 1) % colorArray.size
-            leftLeg.setBackgroundColor(colorArray[countClick[5]])
+            if(countClick[5] == 1) countClick[5] = 5 else countClick[5] = (countClick[5] - 1) % colorArray.size
+            leftLeg.setBackgroundColor(colorArray[countClick[5]-1])
         }
     }
 }
 
 class FatigueLevelsBack : AppCompatActivity() {
+    //val adMe = AdoptionMenu()//ここ大事やで
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,28 +88,29 @@ class FatigueLevelsBack : AppCompatActivity() {
         //次画面への遷移ボタン
         val button = findViewById<Button>(R.id.tra_com_back)
         button.setOnClickListener {
+            adMe.getFatigue(countClick)//疲労度を取得
             val intent = Intent(this, Trained::class.java)
             startActivity(intent)
             finish()
         }
 
         var back = findViewById<Button>(R.id.back)
-        back.setBackgroundColor(colorArray[countClick[6]])
+        back.setBackgroundColor(colorArray[countClick[6]-1])
         back.setOnClickListener {
-            countClick[6] = (countClick[6] + 1) % colorArray.size
-            back.setBackgroundColor(colorArray[countClick[6]])
+            if(countClick[6] == 1) countClick[6] = 5 else countClick[6] = (countClick[6] - 1) % colorArray.size
+            back.setBackgroundColor(colorArray[countClick[6]-1])
         }
         var rightcalf = findViewById<Button>(R.id.right_calf)
-        rightcalf.setBackgroundColor(colorArray[countClick[7]])
+        rightcalf.setBackgroundColor(colorArray[countClick[7]-1])
         rightcalf.setOnClickListener {
-            countClick[7] = (countClick[7] + 1) % colorArray.size
-            rightcalf.setBackgroundColor(colorArray[countClick[7]])
+            if(countClick[7] == 1) countClick[7] = 5 else countClick[7] = (countClick[7] - 1) % colorArray.size
+            rightcalf.setBackgroundColor(colorArray[countClick[7]-1])
         }
         var leftcalf = findViewById<Button>(R.id.left_calf)
-        leftcalf.setBackgroundColor(colorArray[countClick[8]])
+        leftcalf.setBackgroundColor(colorArray[countClick[8]-1])
         leftcalf.setOnClickListener {
-            countClick[8] = (countClick[8] + 1) % colorArray.size
-            leftcalf.setBackgroundColor(colorArray[countClick[8]])
+            if(countClick[8] == 1) countClick[8] = 5 else countClick[8] = (countClick[8] - 1) % colorArray.size
+            leftcalf.setBackgroundColor(colorArray[countClick[8]-1])
         }
     }
 }

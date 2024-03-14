@@ -27,7 +27,6 @@
             android:background="#00FFFFFF"
             android:baselineAligned="false"
             app:srcCompat="@drawable/body_front" />
-
     </LinearLayout>
 
     <Button
@@ -172,5 +171,16 @@
         app:layout_constraintVertical_bias="1.0"
         android:width="2dp"
         android:color="#000000"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/trainedselects" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
