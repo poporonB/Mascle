@@ -41,13 +41,13 @@
                         android:id="@+id/menu1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text=" "/>
+                        android:text="メニュー1の名前"/>
 
                     <TextView
                         android:id="@+id/time1"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:text=" "/>
+                        android:text="タイム1"/>
                 </LinearLayout>
 
                 <ImageView
@@ -83,13 +83,13 @@
                         android:id="@+id/menu2"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text=" " />
+                        android:text="メニュー2の名前"/>
 
                     <TextView
                         android:id="@+id/time2"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:text=" "/>
+                        android:text="タイム2"/>
                 </LinearLayout>
 
                 <ImageView
@@ -125,13 +125,13 @@
                         android:id="@+id/menu3"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text=" " />
+                        android:text="メニュー3の名前"/>
 
                     <TextView
                         android:id="@+id/time3"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:text=" "/>
+                        android:text="タイム3"/>
                 </LinearLayout>
 
                 <ImageView
@@ -141,7 +141,6 @@
                     android:layout_weight="1" />
 
             </LinearLayout>
-
 
             <!-- メニュー4 -->
             <LinearLayout
@@ -168,13 +167,13 @@
                         android:id="@+id/menu4"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text=" " />
+                        android:text="メニュー4の名前"/>
 
                     <TextView
                         android:id="@+id/time4"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:text=" "/>
+                        android:text="タイム4"/>
                 </LinearLayout>
 
                 <ImageView
@@ -210,13 +209,13 @@
                         android:id="@+id/menu5"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text=" " />
+                        android:text="メニュー5の名前"/>
 
                     <TextView
                         android:id="@+id/time5"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:text=" "/>
+                        android:text="タイム5"/>
                 </LinearLayout>
 
                 <ImageView
@@ -252,13 +251,13 @@
                         android:id="@+id/menu6"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:text=" " />
+                        android:text="メニュー6の名前"/>
 
                     <TextView
                         android:id="@+id/time6"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:text=" "/>
+                        android:text="タイム6"/>
                 </LinearLayout>
 
                 <ImageView
@@ -268,9 +267,6 @@
                     android:layout_weight="1" />
 
             </LinearLayout>
-
-
-
 
             <!-- 次画面への遷移ボタン -->
             <Button

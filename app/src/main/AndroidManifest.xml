@@ -26,7 +26,7 @@
         <activity android:name=".Trained"/>
         <activity android:name=".TrainedBack"/>
         <activity android:name=".Times"/>
-        <activity android:name=".List"/>
+        <activity android:name=".MenuList"/>
         <activity android:name=".Play"/>
 
     </application>

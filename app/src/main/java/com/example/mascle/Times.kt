@@ -1,3 +1,4 @@
+
 package com.example.mascle
 
 import android.content.Intent
@@ -31,7 +32,7 @@ class Times : AppCompatActivity(){
         finish.setOnClickListener{
             if(times<=30 && times > 0) {
                 adMe.getTimes(times)//時間を取得
-                val intent = Intent(this, List::class.java)
+                val intent = Intent(this, MenuList::class.java)
                 startActivity(intent)
                 finish()
             }
