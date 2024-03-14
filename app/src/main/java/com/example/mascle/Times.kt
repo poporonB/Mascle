@@ -33,7 +33,7 @@ class Times : AppCompatActivity(){
 
         finish.setOnClickListener{
             adMe.getTimes(times)//時間を取得
-            val intent = Intent(this, List::class.java)
+            val intent = Intent(this, MenuList::class.java)
             startActivity(intent)
             finish()
         }
