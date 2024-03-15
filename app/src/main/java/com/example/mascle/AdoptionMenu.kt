@@ -27,9 +27,9 @@ class AdoptionMenu (){
         listGet.getList(listed, times,trainedPart)//Listにリストと時間を送る
     }
 
-    fun cycle(min:Int):Pair<Int,Int>{//1サイクルのセット数と残り時間
-        var setTimes = min / 6
-        var reminderMin = min % 6
+    fun cycle():Pair<Int,Int>{//1サイクルのセット数と残り時間
+        var setTimes = times / 6
+        var reminderMin = times % 6
 
         return Pair(setTimes,reminderMin)
     }
