@@ -268,6 +268,48 @@
 
             </LinearLayout>
 
+            <!-- メニュー7 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="#FFFFFF"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="・メニュー7"
+                        android:textColor="#80E12A"/>
+
+                    <TextView
+                        android:id="@+id/menu7"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="メニュー7の名前"/>
+
+                    <TextView
+                        android:id="@+id/time7"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:text="タイム7"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/image7"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
             <!-- 次画面への遷移ボタン -->
             <Button
                 android:id="@+id/start"
