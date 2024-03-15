@@ -188,5 +188,10 @@ class MenuList : AppCompatActivity() {
         trainingPart = trainPart
         Log.e("List", listTrain.joinToString()+" "+min+" "+trainingPart.contentToString())
     }
+
+    /*fun getMenu():List<List<Any>>{
+        finalList = final
+        return finalList
+    }*/
 }
 
