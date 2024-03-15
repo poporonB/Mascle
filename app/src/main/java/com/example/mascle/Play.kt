@@ -44,6 +44,8 @@ class Play : AppCompatActivity() {
             buttonPush() // タイマーの状態を切り替える
         }
         timer = Timer()
+
+        //getMenu()
         main(count)
     }
 
