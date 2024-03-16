@@ -14,6 +14,11 @@ import android.media.Ringtone//音
 import android.net.Uri//音
 import android.media.RingtoneManager//音
 
+var listed = listOf(//ここでメニューを入れている
+    listOf<Any>(5,"再度チェスト"),
+    listOf<Any>(3,"休憩"),
+    listOf<Any>(5,"腹筋"),
+)
 class Play : AppCompatActivity() {
     lateinit var ur0: Uri//音
     lateinit var rt0: Ringtone//音
@@ -24,11 +29,7 @@ class Play : AppCompatActivity() {
     lateinit var timer : Timer
     var count = 0
 
-    val listed = listOf(//ここでメニューを入れている
-        listOf<Any>(5,"再度チェスト"),
-        listOf<Any>(3,"休憩"),
-        listOf<Any>(5,"腹筋"),
-    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play)
@@ -107,5 +108,9 @@ class Play : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
+    }
+    fun getMenu(finalMenu : List<List<Any>>){//負荷度と部位と鍛えたい部位をコピー
+        listed = finalMenu.map{it.toList()}
+        Log.e("List", listed.joinToString())
     }
 }

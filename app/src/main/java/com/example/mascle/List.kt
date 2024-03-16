@@ -380,4 +380,6 @@ class MenuList : AppCompatActivity() {
         trainingPart = trainPart
         Log.e("List", listTrain.joinToString()+" "+min+" "+trainingPart.contentToString())
     }
+
+
 }
