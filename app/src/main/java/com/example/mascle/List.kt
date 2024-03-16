@@ -38,19 +38,8 @@ class MenuList : AppCompatActivity() {
     val listGet2 = Play()//ここ大事やで
 
     var listed2 = mutableListOf(
-        mutableListOf<Any>(5,"ArmMenu"),//<時間とメニュー名>、<時間と休憩>を交互に
-        mutableListOf<Any>(5,"休憩"),
-        mutableListOf<Any>(5,"ChestMenu"),
-        mutableListOf<Any>(5,"休憩"),
-        mutableListOf<Any>(5,"StomachMenu"),
-        mutableListOf<Any>(5,"休憩"),
-        mutableListOf<Any>(5,"LegMenu"),
-        mutableListOf<Any>(5,"休憩"),
-        mutableListOf<Any>(5,"BackMenu"),
-        mutableListOf<Any>(5,"休憩"),
-        mutableListOf<Any>(5,"CalfMenu"),
+        mutableListOf<Any>(5, "ArmMenu"), // <時間とメニュー名>、<時間と休憩>を交互に
     )
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,13 +69,14 @@ class MenuList : AppCompatActivity() {
         val image4 = findViewById<ImageView>(R.id.image4)
         val image5 = findViewById<ImageView>(R.id.image5)
         val image6 = findViewById<ImageView>(R.id.image6)
+        val image7 = findViewById<ImageView>(R.id.image7)
 
 
 
         Start = findViewById<Button>(R.id.start)
 
         Start.setOnClickListener {
-            listGet2.getList2(listed2)//Playにlisted2を送る
+            listGet2.getMenu(listed2)//Playにlisted2を送る
             val intent = Intent(this, Play::class.java)
             startActivity(intent)
             finish()
@@ -108,38 +98,62 @@ class MenuList : AppCompatActivity() {
         var ThisLoadDegree: Int = 0 //listedの負荷度
         var BonusLoadDegree: Int = 0 //ボーナスメニューの負荷度
         var Bonusmenuname: CharSequence? = null // ボーナスメニューの名前 (//鍛えたい部位のメニューの中で、一番負荷度が高いものを採用)
+        var armflag = true
+        var legflag = true
+        var calfflag = true
 
         for (i in 0 until 9) {
 
-            if (listTrain[i][1].toString() == "Rarm" || listTrain[i][1].toString() == "Larm") {
-                for (j in 0 until 5) {
-                    if (j == 0) {
-                        if (listTrain[i][0].toString() == "5") {
-                            Menu1.text = csvData[j].substring(2)
-                            Time1.text = "時間 : ${menutime}分"
-                            image1.setImageResource(R.drawable.plank_pu)
-                            listed2[0][1] = Menu1.text
 
-                            if (trainingPart[0] == true || trainingPart[1] == true) Bonusmenuname = Menu1.text
-                        }
-                    } else {
-                        LoadDegree = csvData[j][0].toString()
-                        if (listTrain[i][0].toString() == LoadDegree) {
-                            Menu1.text = csvData[j].substring(1)
-                            Time1.text = "時間 : ${menutime}分"
-                            if (LoadDegree == "5") image1.setImageResource(R.drawable.plank_pu)
-                            if (LoadDegree == "4") image1.setImageResource(R.drawable.diamond_pu)
-                            if (LoadDegree == "3") image1.setImageResource(R.drawable.diamond_pu_knee)
-                            if (LoadDegree == "2") image1.setImageResource(R.drawable.plank_pu_knee)
-                            if (LoadDegree == "1") image1.setImageResource(R.drawable.floor_dips)
+            if (armflag) {
+                armflag = false
+                if (listTrain[i][1].toString() == "Rarm" || listTrain[i][1].toString() == "Larm") {
+                    for (j in 0 until 5) {
+                        if (j == 0) {
+                            if (listTrain[i][0].toString() == "5") {
+                                Menu1.text = csvData[j].substring(2)
+                                Time1.text = "時間 : ${menutime}分"
+                                image1.setImageResource(R.drawable.plank_pu)
 
-                            listed2[0][1] = Menu1.text
+                                listed2[0][0] = 45
+                                listed2[0][1] = Menu1.text
+                                listed2.add(mutableListOf<Any>(15, "休憩"))
 
-                            if (trainingPart[0] == true || trainingPart[1] == true) {
-                                ThisLoadDegree = listTrain[i][0] as Int
-                                if (ThisLoadDegree > BonusLoadDegree) {
-                                    Bonusmenuname = Menu1.text
-                                    BonusLoadDegree = ThisLoadDegree
+                                for (k in 1 until menutime) {
+                                    listed2.add(mutableListOf<Any>(45, Menu1.text))
+                                    listed2.add(mutableListOf<Any>(15, "休憩"))
+                                }
+
+
+                                if (trainingPart[0] == true || trainingPart[1] == true) Bonusmenuname =
+                                    Menu1.text
+                            }
+                        } else {
+                            LoadDegree = csvData[j][0].toString()
+                            if (listTrain[i][0].toString() == LoadDegree) {
+                                Menu1.text = csvData[j].substring(1)
+                                Time1.text = "時間 : ${menutime}分"
+                                if (LoadDegree == "5") image1.setImageResource(R.drawable.plank_pu)
+                                if (LoadDegree == "4") image1.setImageResource(R.drawable.diamond_pu)
+                                if (LoadDegree == "3") image1.setImageResource(R.drawable.diamond_pu_knee)
+                                if (LoadDegree == "2") image1.setImageResource(R.drawable.plank_pu_knee)
+                                if (LoadDegree == "1") image1.setImageResource(R.drawable.floor_dips)
+
+                                listed2[0][0] = 45
+                                listed2[0][1] = Menu1.text
+                                listed2.add(mutableListOf<Any>(15, "休憩"))
+
+                                for (k in 1 until menutime) {
+                                    listed2.add(mutableListOf<Any>(45, Menu1.text))
+                                    listed2.add(mutableListOf<Any>(15, "休憩"))
+                                }
+
+                                if (trainingPart[0] == true || trainingPart[1] == true) {
+                                    ThisLoadDegree = listTrain[i][0] as Int
+                                    if (ThisLoadDegree > BonusLoadDegree) {
+                                        Bonusmenuname = Menu1.text
+                                        BonusLoadDegree = ThisLoadDegree
+                                    }
                                 }
                             }
                         }
@@ -159,7 +173,10 @@ class MenuList : AppCompatActivity() {
                         if (LoadDegree == "2") image2.setImageResource(R.drawable.normal_pu_knee)
                         if (LoadDegree == "1") image2.setImageResource(R.drawable.wall_pu)
 
-                        listed2[2][1] = Menu2.text
+                        for (k in 0 until menutime) {
+                            listed2.add(mutableListOf<Any>(45, Menu2.text))
+                            listed2.add(mutableListOf<Any>(15, "休憩"))
+                        }
 
                         if (trainingPart[2] == true) {
                             ThisLoadDegree = listTrain[i][0] as Int
@@ -184,7 +201,10 @@ class MenuList : AppCompatActivity() {
                         if (LoadDegree == "2") image3.setImageResource(R.drawable.leg_raise)
                         if (LoadDegree == "1") image3.setImageResource(R.drawable.crunch)
 
-                        listed2[4][1] = Menu3.text
+                        for (k in 0 until menutime) {
+                            listed2.add(mutableListOf<Any>(45, Menu3.text))
+                            listed2.add(mutableListOf<Any>(15, "休憩"))
+                        }
 
                         if (trainingPart[3] == true) {
                             ThisLoadDegree = listTrain[i][0] as Int
@@ -199,24 +219,30 @@ class MenuList : AppCompatActivity() {
 
 
             if (listTrain[i][1].toString() == "Rleg" || listTrain[i][1].toString() == "Lleg") {
-                for (j in 15 until 20) {
-                    LoadDegree = csvData[j][0].toString()
-                    if (listTrain[i][0].toString() == LoadDegree) {
-                        Menu4.text = csvData[j].substring(1)
-                        Time4.text = "時間 : ${menutime}分"
-                        if (LoadDegree == "5") image4.setImageResource(R.drawable.jumping_squat)
-                        if (LoadDegree == "4") image4.setImageResource(R.drawable.bulgarian_squat)
-                        if (LoadDegree == "3") image4.setImageResource(R.drawable.side_squat)
-                        if (LoadDegree == "2") image4.setImageResource(R.drawable.full_squat)
-                        if (LoadDegree == "1") image4.setImageResource(R.drawable.normal_squat)
+                if (legflag) {
+                    legflag = false
+                    for (j in 15 until 20) {
+                        LoadDegree = csvData[j][0].toString()
+                        if (listTrain[i][0].toString() == LoadDegree) {
+                            Menu4.text = csvData[j].substring(1)
+                            Time4.text = "時間 : ${menutime}分"
+                            if (LoadDegree == "5") image4.setImageResource(R.drawable.jumping_squat)
+                            if (LoadDegree == "4") image4.setImageResource(R.drawable.bulgarian_squat)
+                            if (LoadDegree == "3") image4.setImageResource(R.drawable.side_squat)
+                            if (LoadDegree == "2") image4.setImageResource(R.drawable.full_squat)
+                            if (LoadDegree == "1") image4.setImageResource(R.drawable.normal_squat)
 
-                        listed2[6][1] = Menu4.text
+                            for (k in 0 until menutime) {
+                                listed2.add(mutableListOf<Any>(45, Menu4.text))
+                                listed2.add(mutableListOf<Any>(15, "休憩"))
+                            }
 
-                        if (trainingPart[4] == true || trainingPart[5] == true) {
-                            ThisLoadDegree = listTrain[i][0] as Int
-                            if (ThisLoadDegree > BonusLoadDegree) {
-                                Bonusmenuname = Menu4.text
-                                BonusLoadDegree = ThisLoadDegree
+                            if (trainingPart[4] == true || trainingPart[5] == true) {
+                                ThisLoadDegree = listTrain[i][0] as Int
+                                if (ThisLoadDegree > BonusLoadDegree) {
+                                    Bonusmenuname = Menu4.text
+                                    BonusLoadDegree = ThisLoadDegree
+                                }
                             }
                         }
                     }
@@ -235,7 +261,10 @@ class MenuList : AppCompatActivity() {
                         if (LoadDegree == "2") image5.setImageResource(R.drawable.back_extension)
                         if (LoadDegree == "1") image5.setImageResource(R.drawable.towel_rowing)
 
-                        listed2[8][1] = Menu5.text
+                        for (k in 0 until menutime) {
+                            listed2.add(mutableListOf<Any>(45, Menu5.text))
+                            listed2.add(mutableListOf<Any>(15, "休憩"))
+                        }
 
                         if (trainingPart[6] == true) {
                             ThisLoadDegree = listTrain[i][0] as Int
@@ -249,24 +278,32 @@ class MenuList : AppCompatActivity() {
             }
 
             if (listTrain[i][1].toString() == "Rcalf" || listTrain[i][1].toString() == "Lcalf"){
-                for (j in 25 until 30) {
-                    LoadDegree = csvData[j][0].toString()
-                    if (listTrain[i][0].toString() == LoadDegree) {
-                        Menu6.text = csvData[j].substring(1)
-                        Time6.text = "時間 : ${menutime}分"
-                        if (LoadDegree == "5") image6.setImageResource(R.drawable.onstand_oneleg_calf)
-                        if (LoadDegree == "4") image6.setImageResource(R.drawable.oneleg_calf)
-                        if (LoadDegree == "3") image6.setImageResource(R.drawable.donkey_calf)
-                        if (LoadDegree == "2") image6.setImageResource(R.drawable.seated_calf)
-                        if (LoadDegree == "1") image6.setImageResource(R.drawable.oneleg_calf)
+                if (calfflag) {
+                    calfflag = false
+                    for (j in 25 until 30) {
+                        LoadDegree = csvData[j][0].toString()
+                        if (listTrain[i][0].toString() == LoadDegree) {
+                            Menu6.text = csvData[j].substring(1)
+                            Time6.text = "時間 : ${menutime}分"
+                            if (LoadDegree == "5") image6.setImageResource(R.drawable.onstand_oneleg_calf)
+                            if (LoadDegree == "4") image6.setImageResource(R.drawable.oneleg_calf)
+                            if (LoadDegree == "3") image6.setImageResource(R.drawable.donkey_calf)
+                            if (LoadDegree == "2") image6.setImageResource(R.drawable.seated_calf)
+                            if (LoadDegree == "1") image6.setImageResource(R.drawable.normal_calf)
 
-                        listed2[10][1] = Menu6.text
+                            for (k in 0 until menutime) {
+                                listed2.add(mutableListOf<Any>(45, Menu6.text))
+                                listed2.add(mutableListOf<Any>(15, "休憩"))
+                            }
+                            listed2.removeLast()
 
-                        if (trainingPart[7] == true || trainingPart[8] == true) {
-                            ThisLoadDegree = listTrain[i][0] as Int
-                            if (ThisLoadDegree > BonusLoadDegree) {
-                                Bonusmenuname = Menu6.text
-                                BonusLoadDegree = ThisLoadDegree
+
+                            if (trainingPart[7] == true || trainingPart[8] == true) {
+                                ThisLoadDegree = listTrain[i][0] as Int
+                                if (ThisLoadDegree > BonusLoadDegree) {
+                                    Bonusmenuname = Menu6.text
+                                    BonusLoadDegree = ThisLoadDegree
+                                }
                             }
                         }
                     }
@@ -277,6 +314,46 @@ class MenuList : AppCompatActivity() {
         if (Bonusmenutime != 0) {
             Menu7.text = Bonusmenuname
             Time7.text = "時間 : ${Bonusmenutime}分"
+
+            if (Bonusmenuname == "プランクプッシュアップ") image7.setImageResource(R.drawable.plank_pu)
+            if (Bonusmenuname == "ダイヤモンドプッシュアップ") image7.setImageResource(R.drawable.diamond_pu)
+            if (Bonusmenuname == "膝つきダイヤモンドプッシュアップ") image7.setImageResource(R.drawable.diamond_pu_knee)
+            if (Bonusmenuname == "膝つきプランクプッシュアップ") image7.setImageResource(R.drawable.plank_pu_knee)
+            if (Bonusmenuname == "フロアディップス") image7.setImageResource(R.drawable.floor_dips)
+
+            if (Bonusmenuname == "椅子に足をのせてプッシュアップ") image7.setImageResource(R.drawable.chair_pu)
+            if (Bonusmenuname == "片足プッシュアップ") image7.setImageResource(R.drawable.oneleg_pu)
+            if (Bonusmenuname == "ノーマルプッシュアップ") image7.setImageResource(R.drawable.normal_pu)
+            if (Bonusmenuname == "膝つきプッシュアップ") image7.setImageResource(R.drawable.normal_pu_knee)
+            if (Bonusmenuname == "壁に手をついてプッシュアップ") image7.setImageResource(R.drawable.wall_pu)
+
+            if (Bonusmenuname == "トゥータッチ") image7.setImageResource(R.drawable.toes_touch)
+            if (Bonusmenuname == "V字腹筋") image7.setImageResource(R.drawable.v_stomach)
+            if (Bonusmenuname == "ニートゥーチェスト") image7.setImageResource(R.drawable.knee_to_chest)
+            if (Bonusmenuname == "レッグレイズ") image7.setImageResource(R.drawable.leg_raise)
+            if (Bonusmenuname == "クランチ") image7.setImageResource(R.drawable.crunch)
+
+            if (Bonusmenuname == "ジャンピングスクワット") image7.setImageResource(R.drawable.jumping_squat)
+            if (Bonusmenuname == "ブルガリアンスクワット") image7.setImageResource(R.drawable.bulgarian_squat)
+            if (Bonusmenuname == "サイドスクワット") image7.setImageResource(R.drawable.side_squat)
+            if (Bonusmenuname == "フルスクワット") image7.setImageResource(R.drawable.full_squat)
+            if (Bonusmenuname == "ノーマルスクワット") image7.setImageResource(R.drawable.normal_squat)
+
+            if (Bonusmenuname == "懸垂") image7.setImageResource(R.drawable.pull_up)
+            if (Bonusmenuname == "バックリバースプランクアップダウン") image7.setImageResource(R.drawable.back_plank_pu)
+            if (Bonusmenuname == "パイクプッシュアップ") image7.setImageResource(R.drawable.pike_pu)
+            if (Bonusmenuname == "バックエクステンション") image7.setImageResource(R.drawable.back_extension)
+            if (Bonusmenuname == "タオルローイング") image7.setImageResource(R.drawable.towel_rowing)
+
+            if (Bonusmenuname == "台の上で片足カーフレイズ") image7.setImageResource(R.drawable.onstand_oneleg_calf)
+            if (Bonusmenuname == "片足スタンディングカーフレイズ") image7.setImageResource(R.drawable.oneleg_calf)
+            if (Bonusmenuname == "ドンキーカーフレイズ") image7.setImageResource(R.drawable.donkey_calf)
+            if (Bonusmenuname == "シーテッドカーフレイズ") image7.setImageResource(R.drawable.seated_calf)
+            if (Bonusmenuname == "スタンディングカーフレイズ") image7.setImageResource(R.drawable.normal_calf)
+
+        } else {
+            Menu7.text = "ボーナスメニュー"
+            Time7.text = "なし"
         }
 
     }
