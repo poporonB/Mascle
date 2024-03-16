@@ -30,7 +30,7 @@ class Times : AppCompatActivity(){
         viewTime = findViewById<TextView>(R.id.ViewTime)
 
         finish.setOnClickListener{
-            if(times<=30 && times > 0) {
+            if(times<=30 && times > 5) {
                 adMe.getTimes(times)//時間を取得
                 val intent = Intent(this, MenuList::class.java)
                 startActivity(intent)

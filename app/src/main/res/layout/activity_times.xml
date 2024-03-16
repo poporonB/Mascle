@@ -101,16 +101,16 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="276dp"
+        android:layout_width="350dp"
         android:layout_height="79dp"
         android:gravity="center"
-        android:text="Max30分"
-        android:textSize="48sp"
+        android:text="Min6分 Max30分"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/ViewTime"
         app:layout_constraintEnd_toEndOf="@+id/minit"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="@+id/ViewTime"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641" />
+        app:layout_constraintVertical_bias="0.602" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
